@@ -15,7 +15,7 @@ function setup() {
 
 function draw() {
   background("black");  
-  if(wall.x-bullet.x<(bullet.width+wall.width)/2){
+  if(hasCollided(bullet,wall)){
     bullet.velocityX=0;
     var deformation=(0.5*weight*speed*speed)/(thickness*thickness*thickness);
     if(deformation>10){
@@ -26,4 +26,10 @@ function draw() {
     }
   }
   drawSprites();
+}
+function hasCollided(bullet,wall){
+  if(wall.x-bullet.x<(bullet.width+wall.width)/2){
+    return true
+  }  
+    return false
 }
